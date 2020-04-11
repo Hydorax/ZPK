@@ -31,7 +31,7 @@ public class SuwakForm extends JPanel{
     private int wartosc_r;
     private int wartosc_g;
     private int wartosc_b;
-    private int wartosc_rgb;
+    private Color kolor;
     private SuwakOrientacja orientacja;
     private JSlider r;
     private JSlider g;
@@ -139,15 +139,16 @@ public class SuwakForm extends JPanel{
         b.setValue(wartosc_b);
         firePropertyChange("wartosc_b",old_wartosc_b, wartosc_b);       
     }
-    public int getWartosc_rgb(){
-        wartosc_rgb = Integer.valueOf(String.valueOf(wartosc_r) + String.valueOf(wartosc_g) + String.valueOf(wartosc_b)); 
-        return wartosc_rgb;
+    public Color getKolor(){
+        kolor = new Color(wartosc_r, wartosc_g, wartosc_b);
+       // kolor = Integer.valueOf(String.valueOf(wartosc_r) + String.valueOf(wartosc_g) + String.valueOf(wartosc_b)); 
+        return kolor;
     }
     public void setWartosc_rgb(int wartosc_rgb){
-        int old_wartosc_rgb = this.wartosc_rgb;
-        this.wartosc_rgb = wartosc_rgb;
-        b.setValue(wartosc_rgb);
-        firePropertyChange("wartosc_rgb",old_wartosc_rgb, wartosc_rgb);        
+       // int old_wartosc_rgb = this.wartosc_rgb;
+       // this.wartosc_rgb = wartosc_rgb;
+       // b.setValue(wartosc_rgb);
+        //firePropertyChange("wartosc_rgb",old_wartosc_rgb, wartosc_rgb);        
     }
     
     public SuwakOrientacja getOrientacja(){
