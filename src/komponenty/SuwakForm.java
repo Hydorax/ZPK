@@ -147,7 +147,7 @@ public class SuwakForm extends JPanel{
         int old_wartosc_rgb = this.wartosc_rgb;
         this.wartosc_rgb = wartosc_rgb;
         b.setValue(wartosc_rgb);
-        firePropertyChange("wartosc_rgb",old_wartosc_rgb, wartosc_rgb);       
+        firePropertyChange("wartosc_rgb",old_wartosc_rgb, wartosc_rgb);        
     }
     
     public SuwakOrientacja getOrientacja(){
