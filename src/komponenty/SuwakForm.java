@@ -40,7 +40,7 @@ public class SuwakForm extends JPanel{
  public SuwakForm(){
      
         this.setLayout(new GridLayout(3, 1));
-        r = new JSlider(0, 200, 120); 
+        r = new JSlider(0, 255, 0); 
         r.setUI(new BasicSliderUI(r){
          public void paintThumb(Graphics g){
              Graphics2D g2d = (Graphics2D) g;
@@ -62,7 +62,7 @@ public class SuwakForm extends JPanel{
          }
      });
         
-        g = new JSlider(0, 200, 120); 
+        g = new JSlider(0, 255, 0); 
         g.setUI(new BasicSliderUI(g){
          public void paintThumb(Graphics gg){
              Graphics2D g2d = (Graphics2D) gg;
@@ -82,7 +82,7 @@ public class SuwakForm extends JPanel{
          }
      });
         
-        b = new JSlider(0, 200, 120); 
+        b = new JSlider(0, 255, 0); 
         b.setUI(new BasicSliderUI(b){
          public void paintThumb(Graphics g){
              Graphics2D g2d = (Graphics2D) g;
@@ -144,11 +144,20 @@ public class SuwakForm extends JPanel{
        // kolor = Integer.valueOf(String.valueOf(wartosc_r) + String.valueOf(wartosc_g) + String.valueOf(wartosc_b)); 
         return kolor;
     }
-    public void setWartosc_rgb(int wartosc_rgb){
-       // int old_wartosc_rgb = this.wartosc_rgb;
-       // this.wartosc_rgb = wartosc_rgb;
-       // b.setValue(wartosc_rgb);
-        //firePropertyChange("wartosc_rgb",old_wartosc_rgb, wartosc_rgb);        
+    public void setKolor(Color kolor){
+        
+        
+        
+        Color old_kolor = this.kolor;
+        this.kolor = kolor;
+        wartosc_r = kolor.getRed();
+        wartosc_g = kolor.getGreen();
+        wartosc_b = kolor.getBlue();
+        r.setValue(wartosc_r);
+        g.setValue(wartosc_g);
+        b.setValue(wartosc_b);
+        //b.setValue(wartosc_rgb);
+        firePropertyChange("Kolor",old_kolor, kolor);        
     }
     
     public SuwakOrientacja getOrientacja(){
