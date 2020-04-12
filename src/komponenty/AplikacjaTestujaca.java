@@ -16,6 +16,7 @@ public class AplikacjaTestujaca extends javax.swing.JFrame {
      */
     public AplikacjaTestujaca() {
         initComponents();
+        jPanel1.setBackground(suwakForm1.getKolor());
     }
 
     /**
@@ -33,7 +34,10 @@ public class AplikacjaTestujaca extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        suwakForm1.setKolor(new java.awt.Color(204, 51, 0));
+        suwakForm1.setOrientacja(komponenty.SuwakOrientacja.Pionowo);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

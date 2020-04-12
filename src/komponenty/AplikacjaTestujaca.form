@@ -57,11 +57,19 @@
   </Layout>
   <SubComponents>
     <Component class="komponenty.SuwakForm" name="suwakForm1">
+      <Properties>
+        <Property name="kolor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="33" red="cc" type="rgb"/>
+        </Property>
+        <Property name="orientacja" type="komponenty.SuwakOrientacja" editor="org.netbeans.modules.form.editors.EnumEditor">
+          <Value id="Pionowo"/>
+        </Property>
+      </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
