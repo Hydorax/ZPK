@@ -5,6 +5,7 @@
  */
 package komponenty;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -16,6 +17,7 @@ import java.awt.Panel;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.beans.PropertyChangeListener;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -39,7 +41,14 @@ public class SuwakForm extends JPanel{
     
  public SuwakForm(){
      
+        
         this.setLayout(new GridLayout(3, 1));
+        
+        JPanel r_panel = new JPanel();
+        JPanel g_panel = new JPanel();
+        JPanel b_panel = new JPanel();
+        
+        
         r = new JSlider(0, 255, 0); 
         r.setUI(new BasicSliderUI(r){
          public void paintThumb(Graphics g){
@@ -57,10 +66,15 @@ public class SuwakForm extends JPanel{
              g2d.setColor(Color.red);
              
              wartosc_r = r.getValue();
-             
+             r_panel.setBackground(new java.awt.Color(wartosc_r, 0, 0));
              
          }
      });
+        r_panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        r_panel.setLayout(new BorderLayout());
+        this.add(r_panel);
+        r_panel.add(r);
+                
         
         g = new JSlider(0, 255, 0); 
         g.setUI(new BasicSliderUI(g){
@@ -78,9 +92,14 @@ public class SuwakForm extends JPanel{
              g2d.drawLine(t.x + t.width - 1, t.y, t.x + tw2, t.y + t.height);
              g2d.setColor(Color.red);
              wartosc_g = g.getValue();
+             g_panel.setBackground(new java.awt.Color(0, wartosc_g, 0));
              
          }
      });
+        g_panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        g_panel.setLayout(new BorderLayout());
+        this.add(g_panel);
+        g_panel.add(g);
         
         b = new JSlider(0, 255, 0); 
         b.setUI(new BasicSliderUI(b){
@@ -99,12 +118,18 @@ public class SuwakForm extends JPanel{
              g2d.setColor(Color.red);
              
             wartosc_b = b.getValue(); 
+            b_panel.setBackground(new java.awt.Color(0, 0, wartosc_b));
             
          }
      });
-     this.add(r);
-     this.add(g);
-     this.add(b);
+        b_panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        b_panel.setLayout(new BorderLayout());
+        this.add(b_panel);
+        b_panel.add(b);
+//     this.add(r);
+//     this.add(g);
+//     this.add(b);
+     
      
  }
     public int getWartosc_r(){
