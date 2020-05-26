@@ -281,20 +281,7 @@ public class SuwakForm extends JPanel implements Serializable{
          invalidate();
     }
 
-//    /**
-//     *
-//     * @param pll
-//   
-//     */
-//    @Override
-//     public void removePropertyChangeListener(PropertyChangeListener pll) {
-//        supp.removePropertyChangeListener(pll);
-//    }
-//
-//    @Override
-//    public void addPropertyChangeListener(PropertyChangeListener pll) {
-//        supp.addPropertyChangeListener(pll);
-//    }
+
 }
 
 
