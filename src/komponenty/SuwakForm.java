@@ -17,9 +17,10 @@ import java.awt.Panel;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.io.Serializable;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import static javax.swing.SwingConstants.CENTER;
@@ -31,7 +32,7 @@ import javax.swing.plaf.basic.BasicSliderUI;
  *
  * @author Sebastian
  */
-public class SuwakForm extends JPanel{
+public class SuwakForm extends JPanel implements Serializable{
 
     private int wartosc_r;
     private int wartosc_g;
@@ -41,22 +42,16 @@ public class SuwakForm extends JPanel{
     private JSlider r;
     private JSlider g;
     private JSlider b;
-    private JLabel label_r;
-    private JLabel label_g;
-    private JLabel label_b;
-    
+    private final PropertyChangeSupport supp = new PropertyChangeSupport(this);
     
  public SuwakForm(){
      
         
-        this.setLayout(new GridLayout(3, 2));
+        this.setLayout(new GridLayout(3, 1));
         
         JPanel r_panel = new JPanel();
         JPanel g_panel = new JPanel();
         JPanel b_panel = new JPanel();
-        JPanel rr_panel = new JPanel();
-        JPanel gg_panel = new JPanel();
-        JPanel bb_panel = new JPanel();
         
         
         r = new JSlider(0, 255, 0); 
@@ -157,28 +152,60 @@ public class SuwakForm extends JPanel{
 //     this.add(g);
 //     this.add(b);
      
-
      
  }
     public int getWartosc_r(){
         return wartosc_r;
     }
-    public void setWartosc_r(int wartosc_r){
-        int old_wartosc_r = this.wartosc_r;
+//    public void setWartosc_r(int wartosc_r){
+//        if((wartosc_r <= 255) && (wartosc_r >=0)){
+//            int old_wartosc_r = this.wartosc_r;
+//            this.wartosc_r = wartosc_r;
+//            r.setValue(wartosc_r);
+//            firePropertyChange("wartosc_r",old_wartosc_r, wartosc_r);   
+//        }else{
+//           firePropertyChange("wartosc_r",this.wartosc_r, this.wartosc_r);
+//        }
+//            
+//    }
+    
+     public void setWartosc_r(int wartosc_r) {
+        if (wartosc_r < 0 || wartosc_r > 255) {
+            throw new IllegalArgumentException("Zakres od 0 -> 255" + wartosc_r);
+        }
+        int old = this.wartosc_r;
         this.wartosc_r = wartosc_r;
         r.setValue(wartosc_r);
-        firePropertyChange("wartosc_r",old_wartosc_r, wartosc_r);       
+        if (wartosc_r != old) {
+            supp.firePropertyChange("wartosc_r", old, wartosc_r);
+        }
     }
     
 
     public int getWartosc_g(){
         return wartosc_g;
     }
-    public void setWartosc_g(int wartosc_g){
-        int old_wartosc_g = this.wartosc_g;
+//    public void setWartosc_g(int wartosc_g){
+//        if((wartosc_g <= 255) && (wartosc_g >=0)){
+//            int old_wartosc_g = this.wartosc_g;
+//            this.wartosc_g = wartosc_g;
+//            r.setValue(wartosc_g);
+//            firePropertyChange("wartosc_g",old_wartosc_g, wartosc_g);   
+//        }else{
+//           firePropertyChange("wartosc_g",this.wartosc_g, this.wartosc_g);
+//        }     
+//    }
+    
+    public void setWartosc_g(int wartosc_g) {
+        if (wartosc_g < 0 || wartosc_g > 255) {
+            throw new IllegalArgumentException("Zakres od 0 -> 255" + wartosc_g);
+        }
+        int old = this.wartosc_g;
         this.wartosc_g = wartosc_g;
         g.setValue(wartosc_g);
-        firePropertyChange("wartosc_g",old_wartosc_g, wartosc_g);       
+        if (wartosc_g != old) {
+            supp.firePropertyChange("wartosc_g", old, wartosc_g);
+        }
     }
     
 
@@ -186,12 +213,31 @@ public class SuwakForm extends JPanel{
     public int getWartosc_b(){
         return wartosc_b;
     }
-    public void setWartosc_b(int wartosc_b){
-        int old_wartosc_b = this.wartosc_b;
+//    public void setWartosc_b(int wartosc_b){
+//        if((wartosc_b <= 255) && (wartosc_b >=0)){
+//            int old_wartosc_b = this.wartosc_b;
+//            this.wartosc_b = wartosc_b;
+//            b.setValue(wartosc_b);
+//            firePropertyChange("wartosc_b",old_wartosc_b, wartosc_b);    
+//        }else{
+//           firePropertyChange("wartosc_b",this.wartosc_b, this.wartosc_b);
+//           
+//        }
+//        
+//    }
+    
+     public void setWartosc_b(int wartosc_b) {
+        if (wartosc_b < 0 || wartosc_b > 255) {
+            throw new IllegalArgumentException("Zakres od 0 -> 255" + wartosc_b);
+        }
+        int old = this.wartosc_b;
         this.wartosc_b = wartosc_b;
         b.setValue(wartosc_b);
-        firePropertyChange("wartosc_b",old_wartosc_b, wartosc_b);       
+        if (wartosc_b != old) {
+            supp.firePropertyChange("wartosc_b", old, wartosc_b);
+        }
     }
+    
     public Color getKolor(){
         kolor = new Color(wartosc_r, wartosc_g, wartosc_b);
        // kolor = Integer.valueOf(String.valueOf(wartosc_r) + String.valueOf(wartosc_g) + String.valueOf(wartosc_b)); 
@@ -234,7 +280,21 @@ public class SuwakForm extends JPanel{
          }
          invalidate();
     }
-    
+
+//    /**
+//     *
+//     * @param pll
+//   
+//     */
+//    @Override
+//     public void removePropertyChangeListener(PropertyChangeListener pll) {
+//        supp.removePropertyChangeListener(pll);
+//    }
+//
+//    @Override
+//    public void addPropertyChangeListener(PropertyChangeListener pll) {
+//        supp.addPropertyChangeListener(pll);
+//    }
 }
 
 
