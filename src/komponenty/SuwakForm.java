@@ -34,11 +34,27 @@ import javax.swing.plaf.basic.BasicSliderUI;
  */
 public class SuwakForm extends JPanel implements Serializable{
 
+ /**
+ * zmienna odpowiedzialna za ustawienie wartości R składowej koloru RGB
+ */
     private int wartosc_r;
+ /**
+ * zmienna odpowiedzialna za ustawienie wartości G składowej koloru RGB
+ */
     private int wartosc_g;
+ /**
+ * zmienna odpowiedzialna za ustawienie wartości B składowej koloru RGB
+ */
     private int wartosc_b;
+ /**
+ * wartość sczytana z  3 suwaków definiująca kolor o wartości RGB(wartosc_r; wartosc_g; wartosc_b)
+ */
     private Color kolor;
+ /**
+ * zmienna odpowiedzialna za położenie komponentu w pionie lub poziomie
+ */
     private SuwakOrientacja orientacja = SuwakOrientacja.Poziomo;
+    
     private JSlider r;
     private JSlider g;
     private JSlider b;
@@ -147,28 +163,19 @@ public class SuwakForm extends JPanel implements Serializable{
         b_panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         b_panel.setLayout(new BorderLayout());
         this.add(b_panel);
-        b_panel.add(b);
-//     this.add(r);
-//     this.add(g);
-//     this.add(b);
-     
+
      
  }
+ /**
+ * Metoda odpowiedzialna za zwracanie składowej R koloru RGB
+ */
     public int getWartosc_r(){
         return wartosc_r;
     }
-//    public void setWartosc_r(int wartosc_r){
-//        if((wartosc_r <= 255) && (wartosc_r >=0)){
-//            int old_wartosc_r = this.wartosc_r;
-//            this.wartosc_r = wartosc_r;
-//            r.setValue(wartosc_r);
-//            firePropertyChange("wartosc_r",old_wartosc_r, wartosc_r);   
-//        }else{
-//           firePropertyChange("wartosc_r",this.wartosc_r, this.wartosc_r);
-//        }
-//            
-//    }
-    
+
+/**
+ * Metoda odpowiedzialna za ustawianie składowej R koloru RGB
+ */    
      public void setWartosc_r(int wartosc_r) {
         if (wartosc_r < 0 || wartosc_r > 255) {
             throw new IllegalArgumentException("Zakres od 0 -> 255" + wartosc_r);
@@ -181,21 +188,16 @@ public class SuwakForm extends JPanel implements Serializable{
         }
     }
     
-
+/**
+ * Metoda odpowiedzialna za zwracanie składowej G koloru RGB
+ */
     public int getWartosc_g(){
         return wartosc_g;
     }
-//    public void setWartosc_g(int wartosc_g){
-//        if((wartosc_g <= 255) && (wartosc_g >=0)){
-//            int old_wartosc_g = this.wartosc_g;
-//            this.wartosc_g = wartosc_g;
-//            r.setValue(wartosc_g);
-//            firePropertyChange("wartosc_g",old_wartosc_g, wartosc_g);   
-//        }else{
-//           firePropertyChange("wartosc_g",this.wartosc_g, this.wartosc_g);
-//        }     
-//    }
-    
+
+ /**
+ * Metoda odpowiedzialna za ustawianie składowej G koloru RGB
+ */   
     public void setWartosc_g(int wartosc_g) {
         if (wartosc_g < 0 || wartosc_g > 255) {
             throw new IllegalArgumentException("Zakres od 0 -> 255" + wartosc_g);
@@ -209,23 +211,16 @@ public class SuwakForm extends JPanel implements Serializable{
     }
     
 
-
+/**
+ * Metoda odpowiedzialna za zwracanie składowej B koloru RGB
+ */
     public int getWartosc_b(){
         return wartosc_b;
     }
-//    public void setWartosc_b(int wartosc_b){
-//        if((wartosc_b <= 255) && (wartosc_b >=0)){
-//            int old_wartosc_b = this.wartosc_b;
-//            this.wartosc_b = wartosc_b;
-//            b.setValue(wartosc_b);
-//            firePropertyChange("wartosc_b",old_wartosc_b, wartosc_b);    
-//        }else{
-//           firePropertyChange("wartosc_b",this.wartosc_b, this.wartosc_b);
-//           
-//        }
-//        
-//    }
-    
+
+ /**
+ * Metoda odpowiedzialna za ustawianie składowej B koloru RGB
+ */   
      public void setWartosc_b(int wartosc_b) {
         if (wartosc_b < 0 || wartosc_b > 255) {
             throw new IllegalArgumentException("Zakres od 0 -> 255" + wartosc_b);
@@ -237,12 +232,16 @@ public class SuwakForm extends JPanel implements Serializable{
             supp.firePropertyChange("wartosc_b", old, wartosc_b);
         }
     }
-    
+/**
+ * Metoda odpowiedzialna za zwracanie wartośi sczytanej z 3 suwaków definiująca kolor o wartości RGB(wartosc_r; wartosc_g; wartosc_b)
+ */    
     public Color getKolor(){
         kolor = new Color(wartosc_r, wartosc_g, wartosc_b);
-       // kolor = Integer.valueOf(String.valueOf(wartosc_r) + String.valueOf(wartosc_g) + String.valueOf(wartosc_b)); 
         return kolor;
     }
+/**
+ * Metoda odpowiedzialna za ustawienie wartośi sczytanej z 3 suwaków definiująca kolor o wartości RGB(wartosc_r; wartosc_g; wartosc_b)
+ */
     public void setKolor(Color kolor){
         
         
@@ -255,13 +254,17 @@ public class SuwakForm extends JPanel implements Serializable{
         r.setValue(wartosc_r);
         g.setValue(wartosc_g);
         b.setValue(wartosc_b);
-        //b.setValue(wartosc_rgb);
         firePropertyChange("Kolor",old_kolor, kolor);        
     }
-    
+/**
+ * Metoda odpowiedzialna za zwracanie aktualnie ustawionej orientacji komponentu(pionowa, poziomo)
+ */    
     public SuwakOrientacja getOrientacja(){
         return orientacja;
     }
+/**
+ * Metoda odpowiedzialna za ustawienie wartości orientacji komponentu (pionowo, poziomo)
+ */
     public void setOrientacja(SuwakOrientacja orientacja){
         SuwakOrientacja old_orientacja = this.orientacja;
         this.orientacja = orientacja;
