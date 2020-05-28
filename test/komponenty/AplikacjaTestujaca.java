@@ -67,6 +67,8 @@ public class AplikacjaTestujaca extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
+        suwakForm1.setOrientacja(komponenty.SuwakOrientacja.Pionowo);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,9 +87,8 @@ public class AplikacjaTestujaca extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))))
                 .addContainerGap(238, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -105,7 +106,7 @@ public class AplikacjaTestujaca extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
